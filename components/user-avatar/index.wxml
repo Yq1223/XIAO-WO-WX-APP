@@ -1,0 +1,17 @@
+<!--
+  用户头像昵称组件
+  支持匿名显示模式
+-->
+<view class="user-avatar-wrap" bind:tap="onTap">
+  <van-image
+    round
+    width="{{size}}rpx"
+    height="{{size}}rpx"
+    src="{{isAnonymous ? '/static/images/default-avatar.png' : (user.avatar || '/static/images/default-avatar.png')}}"
+    fit="cover"
+  />
+  <view class="user-info" wx:if="{{showName}}">
+    <text class="user-name">{{isAnonymous ? '匿名用户' : (user.nickname || '未知用户')}}</text>
+    <text class="user-school" wx:if="{{showSchool && !isAnonymous && user.school}}">{{user.school}}</text>
+  </view>
+</view>

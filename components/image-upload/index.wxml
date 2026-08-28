@@ -1,0 +1,30 @@
+<!--
+  图片上传组件
+  九宫格布局，支持添加和删除
+-->
+<view class="image-upload">
+  <view class="upload-grid">
+    <!-- 已上传图片列表 -->
+    <view class="upload-item" wx:for="{{fileList}}" wx:key="url">
+      <van-image
+        width="200rpx"
+        height="200rpx"
+        fit="cover"
+        radius="12rpx"
+        src="{{item.url || item}}"
+        bind:click="onPreviewImage"
+        data-index="{{index}}"
+      />
+      <!-- 删除按钮 -->
+      <view class="delete-btn" catch:tap="onDelete" data-index="{{index}}">
+        <van-icon name="cross" color="#FFF" size="14" />
+      </view>
+    </view>
+
+    <!-- 添加按钮 -->
+    <view class="upload-add" wx:if="{{fileList.length < maxCount}}" bind:tap="onChooseImage">
+      <van-icon name="plus" color="#CCCCCC" size="40" />
+      <text class="add-text">{{fileList.length}}/{{maxCount}}</text>
+    </view>
+  </view>
+</view>

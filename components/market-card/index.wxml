@@ -1,0 +1,45 @@
+<!--
+  商品卡片组件（瀑布流布局）
+  展示商品缩略信息
+-->
+<view class="market-card" bind:tap="onTap">
+  <!-- 商品图片 -->
+  <view class="card-image">
+    <van-image
+      width="100%"
+      height="{{imageHeight}}rpx"
+      fit="cover"
+      src="{{item.images[0] || ''}}"
+      use-loading-slot
+    >
+      <van-loading slot="loading" type="spinner" size="20" />
+    </van-image>
+    <!-- 已售标签 -->
+    <view class="sold-badge" wx:if="{{item.status === 2}}">
+      <text>已售出</text>
+    </view>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class="card-info">
+    <!-- 标题 -->
+    <text class="item-title">{{item.title}}</text>
+
+    <!-- 价格 -->
+    <view class="price-row">
+      <text class="price">¥{{item.price}}</text>
+      <text class="original-price" wx:if="{{item.originalPrice}}">¥{{item.originalPrice}}</text>
+    </view>
+
+    <!-- 底部：成色 + 收藏 -->
+    <view class="card-footer">
+      <van-tag plain color="#FF6B35" size="mini" wx:if="{{item.conditionText}}">
+        {{item.conditionText}}
+      </van-tag>
+      <view class="like-count">
+        <van-icon name="like-o" color="#999" size="14" />
+        <text class="like-text">{{item.likeCount || 0}}</text>
+      </view>
+    </view>
+  </view>
+</view>

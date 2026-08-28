@@ -1,0 +1,33 @@
+<!--
+  自定义导航栏组件
+  适配状态栏高度和胶囊按钮
+-->
+<view class="navbar" style="padding-top: {{statusBarHeight}}px;">
+  <!-- 状态栏占位 -->
+  <view class="status-bar" style="height: {{statusBarHeight}}px;"></view>
+
+  <!-- 导航内容 -->
+  <view class="navbar-content" style="height: {{navBarHeight}}px;">
+    <!-- 左侧：返回按钮 -->
+    <view class="navbar-left" wx:if="{{back}}" bind:tap="onBack">
+      <van-icon name="arrow-left" color="#FFFFFF" size="22" />
+    </view>
+    <view class="navbar-left" wx:else>
+      <slot name="left"></slot>
+    </view>
+
+    <!-- 中间：标题 -->
+    <view class="navbar-title">
+      <text wx:if="{{title}}">{{title}}</text>
+      <slot wx:else></slot>
+    </view>
+
+    <!-- 右侧 -->
+    <view class="navbar-right">
+      <slot name="right"></slot>
+    </view>
+  </view>
+</view>
+
+<!-- 占位，防止内容被导航栏遮挡 -->
+<view class="navbar-placeholder" style="height: {{statusBarHeight + navBarHeight}}px;"></view>

@@ -1,0 +1,47 @@
+<!--
+  设置页面
+-->
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+
+<view class="page">
+  <!-- 编辑资料 -->
+  <view class="section-title-text">账号设置</view>
+  <van-cell-group>
+    <van-cell title="头像" is-link bind:click="onChangeAvatar">
+      <van-image
+        slot="right-icon"
+        round
+        width="64rpx"
+        height="64rpx"
+        src="{{userInfo.avatar || '/static/images/default-avatar.png'}}"
+      />
+    </van-cell>
+    <van-cell title="昵称" value="{{userInfo.nickname}}" is-link bind:click="onEditNickname" />
+    <van-cell title="学校" value="{{userInfo.school || '未设置'}}" is-link bind:click="onEditSchool" />
+    <van-cell title="简介" value="{{userInfo.bio || '未设置'}}" is-link bind:click="onEditBio" />
+  </van-cell-group>
+
+  <!-- 其他设置 -->
+  <view class="section-title-text">其他</view>
+  <van-cell-group>
+    <van-cell title="清除缓存" is-link bind:click="onClearCache" value="{{cacheSize}}" />
+    <van-cell title="关于我们" is-link bind:click="onAbout" />
+    <van-cell title="意见反馈" is-link bind:click="onFeedback" />
+    <van-cell title="隐私政策" is-link bind:click="onPrivacy" />
+  </van-cell-group>
+
+  <!-- 退出登录 -->
+  <view class="logout-area">
+    <van-button
+      type="default"
+      round
+      block
+      size="large"
+      custom-class="logout-btn"
+      bind:click="onLogout"
+    >
+      退出登录
+    </van-button>
+  </view>
+</view>

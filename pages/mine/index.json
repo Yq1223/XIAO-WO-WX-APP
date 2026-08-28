@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-image": "/miniprogram_npm/@vant/weapp/image/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-empty": "/miniprogram_npm/@vant/weapp/empty/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
+  }
+}

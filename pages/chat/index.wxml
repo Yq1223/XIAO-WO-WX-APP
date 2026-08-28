@@ -1,0 +1,88 @@
+<!--
+  私聊页面
+-->
+<view class="page chat-page">
+  <!-- 消息列表 -->
+  <scroll-view
+    class="message-list"
+    scroll-y
+    scroll-into-view="{{scrollToMessage}}"
+    scroll-with-animation
+    bind:scrolltoupper="onLoadMore"
+  >
+    <!-- 加载更多 -->
+    <view class="load-more" wx:if="{{hasMore}}">
+      <van-loading type="spinner" size="20" color="#FF6B35" />
+    </view>
+
+    <view
+      wx:for="{{messages}}"
+      wx:key="id"
+      id="msg-{{item.id}}"
+      class="message-item {{item.isSelf ? 'self' : 'other'}}"
+    >
+      <!-- 对方头像 -->
+      <view class="msg-avatar" wx:if="{{!item.isSelf}}">
+        <van-image round width="72rpx" height="72rpx" src="{{targetUser.avatar || '/static/images/default-avatar.png'}}" />
+      </view>
+
+      <!-- 消息气泡 -->
+      <view class="msg-bubble {{item.isSelf ? 'self-bubble' : 'other-bubble'}}">
+        <!-- 文本消息 -->
+        <text class="msg-text" wx:if="{{item.type === 'text'}}">{{item.content}}</text>
+        <!-- 图片消息 -->
+        <van-image
+          wx:if="{{item.type === 'image'}}"
+          width="300rpx"
+          height="auto"
+          fit="widthFix"
+          src="{{item.content}}"
+          radius="12rpx"
+          bind:click="onPreviewImage"
+          data-url="{{item.content}}"
+        />
+        <!-- 商品卡片消息 -->
+        <view class="item-card" wx:if="{{item.type === 'item_card'}}" bind:tap="onTapItemCard" data-id="{{item.extra.itemId}}">
+          <van-image width="80rpx" height="80rpx" fit="cover" radius="8rpx" src="{{item.extra.image}}" />
+          <view class="card-info">
+            <text class="card-title">{{item.extra.title}}</text>
+            <text class="card-price">¥{{item.extra.price}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 自己头像 -->
+      <view class="msg-avatar" wx:if="{{item.isSelf}}">
+        <van-image round width="72rpx" height="72rpx" src="{{myAvatar}}" />
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部输入栏 -->
+  <view class="input-bar safe-bottom">
+    <view class="input-wrapper">
+      <input
+        class="msg-input"
+        placeholder="输入消息..."
+        value="{{inputValue}}"
+        bindinput="onInput"
+        bindconfirm="onSendText"
+        confirm-type="send"
+        adjust-position="{{true}}"
+      />
+    </view>
+    <view class="input-actions">
+      <van-icon name="photo-o" color="#999" size="28" bind:tap="onChooseImage" />
+      <van-button
+        type="primary"
+        size="small"
+        round
+        disabled="{{!inputValue}}"
+        bind:click="onSendText"
+        custom-class="send-btn"
+      >
+        发送
+      </van-button>
+    </view>
+  </view>
+</view>

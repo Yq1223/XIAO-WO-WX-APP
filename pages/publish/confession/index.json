@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "发表",
+  "usingComponents": {
+    "image-upload": "../../../components/image-upload/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
+  }
+}

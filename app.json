@@ -1,0 +1,92 @@
+{
+  "pages": [
+    "pages/splash/index",
+    "pages/index/index",
+    "pages/confession/index",
+    "pages/market/index",
+    "pages/mine/index",
+    "pages/detail/post/index",
+    "pages/detail/confession/index",
+    "pages/detail/market/index",
+    "pages/publish/post/index",
+    "pages/publish/confession/index",
+    "pages/publish/market/index",
+    "pages/message/index",
+    "pages/chat/index",
+    "pages/notification/index",
+    "pages/search/index",
+    "pages/profile/index",
+    "pages/mine/posts/index",
+    "pages/mine/collections/index",
+    "pages/mine/history/index",
+    "pages/mine/settings/index",
+    "pages/login/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FF6B35",
+    "navigationBarTitleText": "校窝",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F5F5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF6B35",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/icons/home.png",
+        "selectedIconPath": "static/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/confession/index",
+        "text": "表白墙",
+        "iconPath": "static/icons/heart.png",
+        "selectedIconPath": "static/icons/heart-active.png"
+      },
+      {
+        "pagePath": "pages/market/index",
+        "text": "市场",
+        "iconPath": "static/icons/shop.png",
+        "selectedIconPath": "static/icons/shop-active.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "static/icons/mine.png",
+        "selectedIconPath": "static/icons/mine-active.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-uploader": "/miniprogram_npm/@vant/weapp/uploader/index",
+    "van-image": "/miniprogram_npm/@vant/weapp/image/index",
+    "van-tag": "/miniprogram_npm/@vant/weapp/tag/index",
+    "van-empty": "/miniprogram_npm/@vant/weapp/empty/index",
+    "van-loading": "/miniprogram_npm/@vant/weapp/loading/index",
+    "van-search": "/miniprogram_npm/@vant/weapp/search/index",
+    "van-action-sheet": "/miniprogram_npm/@vant/weapp/action-sheet/index",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index",
+    "van-swipe-cell": "/miniprogram_npm/@vant/weapp/swipe-cell/index",
+    "van-popup": "/miniprogram_npm/@vant/weapp/popup/index",
+    "van-dropdown-menu": "/miniprogram_npm/@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "/miniprogram_npm/@vant/weapp/dropdown-item/index",
+    "van-skeleton": "/miniprogram_npm/@vant/weapp/skeleton/index",
+    "van-nav-bar": "/miniprogram_npm/@vant/weapp/nav-bar/index",
+    "van-notice-bar": "/miniprogram_npm/@vant/weapp/notice-bar/index",
+    "van-divider": "/miniprogram_npm/@vant/weapp/divider/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

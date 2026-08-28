@@ -1,0 +1,45 @@
+/* 浏览记录样式 */
+.list-content {
+  padding: 20rpx 24rpx;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #FFFFFF;
+  border-radius: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.history-info {
+  flex: 1;
+  margin: 0 16rpx;
+}
+
+.history-title {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+
+.history-time {
+  font-size: 22rpx;
+  color: var(--text-hint);
+  margin-top: 8rpx;
+  display: block;
+}
+
+.loading-more {
+  display: flex;
+  justify-content: center;
+  padding: 32rpx 0;
+}
+
+.no-more {
+  padding: 20rpx 0;
+}

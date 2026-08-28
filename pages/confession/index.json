@@ -1,0 +1,13 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "confession-card": "../../components/confession-card/index",
+    "empty-state": "../../components/empty-state/index",
+    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
+    "van-loading": "/miniprogram_npm/@vant/weapp/loading/index",
+    "van-icon": "/miniprogram_npm/@vant/weapp/icon/index",
+    "van-divider": "/miniprogram_npm/@vant/weapp/divider/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
+  }
+}

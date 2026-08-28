@@ -1,0 +1,94 @@
+<!--
+  跳蚤市场页面
+-->
+<van-toast id="van-toast" />
+
+<view class="page">
+  <!-- 搜索栏 -->
+  <view class="search-bar" bind:tap="onSearchTap">
+    <van-search
+      placeholder="搜索闲置好物..."
+      disabled
+      shape="round"
+      background="#FF6B35"
+    />
+  </view>
+
+  <!-- 分类Tab -->
+  <van-tabs
+    active="{{activeCategory}}"
+    bind:change="onCategoryChange"
+    color="#FF6B35"
+    title-active-color="#FF6B35"
+    sticky
+    offset-top="0"
+  >
+    <van-tab
+      wx:for="{{categories}}"
+      wx:key="value"
+      title="{{item.label}}"
+      name="{{item.value}}"
+    />
+  </van-tabs>
+
+  <!-- 筛选栏：排序 + 价格区间 -->
+  <view class="filter-bar">
+    <view class="filter-item {{sortBy === 'default' ? 'active' : ''}}" bind:tap="onSortChange" data-sort="default">
+      <text>综合</text>
+    </view>
+    <view class="filter-item {{sortBy === 'newest' ? 'active' : ''}}" bind:tap="onSortChange" data-sort="newest">
+      <text>最新</text>
+    </view>
+    <view class="filter-item {{sortBy === 'price_asc' ? 'active' : ''}}" bind:tap="onSortChange" data-sort="price_asc">
+      <text>价格↑</text>
+    </view>
+    <view class="filter-item {{sortBy === 'price_desc' ? 'active' : ''}}" bind:tap="onSortChange" data-sort="price_desc">
+      <text>价格↓</text>
+    </view>
+  </view>
+
+  <!-- 瀑布流商品列表 -->
+  <view class="waterfall">
+      <view class="waterfall-column">
+        <market-card
+          wx:for="{{leftList}}"
+          wx:key="id"
+          item="{{item}}"
+          imageHeight="{{320}}"
+        />
+      </view>
+      <view class="waterfall-column">
+        <market-card
+          wx:for="{{rightList}}"
+          wx:key="id"
+          item="{{item}}"
+          imageHeight="{{280}}"
+        />
+      </view>
+    </view>
+
+    <van-loading
+      wx:if="{{loading}}"
+      class="loading-more"
+      type="spinner"
+      color="#FF6B35"
+      size="24"
+    >
+      加载中...
+    </van-loading>
+
+    <view class="no-more" wx:if="{{!hasMore && itemList.length > 0}}">
+      <van-divider contentPosition="center">没有更多了</van-divider>
+    </view>
+
+  <empty-state
+    wx:if="{{!loading && itemList.length === 0}}"
+    text="还没有商品，快来发布闲置吧~"
+    icon="default"
+  />
+
+  <!-- 悬浮发布按钮 -->
+  <view class="fab" bind:tap="onPublish">
+    <van-icon name="plus" color="#FFF" size="24" />
+  </view>
+</view>

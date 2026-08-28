@@ -1,0 +1,21 @@
+/* 我的发布样式 */
+.list-content {
+  padding: 20rpx 24rpx;
+}
+
+.loading-more {
+  display: flex;
+  justify-content: center;
+  padding: 32rpx 0;
+}
+
+.delete-btn {
+  width: 160rpx;
+  height: 100%;
+  background-color: var(--error);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+}

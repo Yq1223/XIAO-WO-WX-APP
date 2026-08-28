@@ -1,0 +1,12 @@
+{
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "消息",
+  "usingComponents": {
+    "empty-state": "../../components/empty-state/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-swipe-cell": "/miniprogram_npm/@vant/weapp/swipe-cell/index",
+    "van-image": "/miniprogram_npm/@vant/weapp/image/index",
+    "van-loading": "/miniprogram_npm/@vant/weapp/loading/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
+  }
+}

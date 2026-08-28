@@ -1,0 +1,56 @@
+<!--
+  会话列表页面
+-->
+<van-toast id="van-toast" />
+
+<view class="page">
+  <view class="conversation-list">
+      <van-swipe-cell
+        wx:for="{{conversations}}"
+        wx:key="id"
+        right-width="{{80}}"
+      >
+        <van-cell
+          bind:click="onTapConversation"
+          data-id="{{item.id}}"
+          data-target="{{item.targetUser}}"
+        >
+          <view class="conversation-item" slot="title">
+            <view class="conv-avatar">
+              <van-image
+                round
+                width="96rpx"
+                height="96rpx"
+                src="{{item.targetUser.avatar || '/static/images/default-avatar.png'}}"
+              />
+              <view class="badge" wx:if="{{item.unreadCount > 0}}">{{item.unreadCount > 99 ? '99+' : item.unreadCount}}</view>
+            </view>
+            <view class="conv-info">
+              <view class="conv-header">
+                <text class="conv-name">{{item.targetUser.nickname}}</text>
+                <text class="conv-time">{{item.lastMessageTimeText}}</text>
+              </view>
+              <text class="conv-preview">{{item.lastMessage}}</text>
+            </view>
+          </view>
+        </van-cell>
+        <view slot="right" class="delete-btn" bind:tap="onDelete" data-id="{{item.id}}">
+          删除
+        </view>
+      </van-swipe-cell>
+
+      <van-loading
+        wx:if="{{loading}}"
+        class="loading-more"
+        type="spinner"
+        color="#FF6B35"
+        size="24"
+      />
+
+    <empty-state
+      wx:if="{{!loading && conversations.length === 0}}"
+      text="暂无消息"
+      icon="chat"
+    />
+  </view>
+</view>

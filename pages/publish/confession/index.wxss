@@ -1,0 +1,46 @@
+/* 发布表白样式 */
+.form-section {
+  background-color: #FFFFFF;
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 16rpx;
+}
+
+.type-grid {
+  display: flex;
+  gap: 16rpx;
+}
+
+.type-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  background-color: var(--bg);
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  border: 2rpx solid transparent;
+}
+
+.type-item.active {
+  background-color: rgba(255, 107, 53, 0.1);
+  color: var(--primary);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+
+.submit-area {
+  padding: 40rpx 24rpx;
+  padding-bottom: calc(40rpx + env(safe-area-inset-bottom));
+}
+
+.submit-btn {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+}

@@ -1,0 +1,70 @@
+<!--
+  评论条目组件
+  支持子评论递归展示
+-->
+<view class="comment-item">
+  <view class="comment-main">
+    <!-- 头像 -->
+    <view class="comment-avatar">
+      <van-image
+        round
+        width="64rpx"
+        height="64rpx"
+        src="{{comment.author.avatar || '/static/images/default-avatar.png'}}"
+      />
+    </view>
+
+    <!-- 内容区 -->
+    <view class="comment-body">
+      <!-- 昵称 + 时间 -->
+      <view class="comment-header">
+        <text class="comment-nickname">{{comment.author.nickname || '匿名用户'}}</text>
+        <text class="comment-time">{{comment.createTimeText}}</text>
+      </view>
+
+      <!-- 评论内容 -->
+      <view class="comment-content">
+        <text>{{comment.content}}</text>
+      </view>
+
+      <!-- 回复信息 -->
+      <view class="reply-info" wx:if="{{comment.replyTo}}">
+        <text class="reply-prefix">回复 </text>
+        <text class="reply-name">@{{comment.replyTo.nickname}}</text>
+      </view>
+
+      <!-- 操作栏 -->
+      <view class="comment-actions">
+        <view class="action-btn" catch:tap="onReply">
+          <van-icon name="chat-o" color="#999" size="16" />
+          <text class="action-label">回复</text>
+        </view>
+        <view class="action-btn" catch:tap="onLike">
+          <van-icon
+            name="{{comment.isLiked ? 'good-job' : 'good-job-o'}}"
+            color="{{comment.isLiked ? '#FF6B35' : '#999'}}"
+            size="16"
+          />
+          <text class="action-label {{comment.isLiked ? 'active' : ''}}">{{comment.likeCount || 0}}</text>
+        </view>
+      </view>
+
+      <!-- 子评论（递归展示，限制2层） -->
+      <view class="sub-comments" wx:if="{{comment.children && comment.children.length > 0 && depth < 2}}">
+        <comment-item
+          wx:for="{{comment.children}}"
+          wx:key="id"
+          comment="{{item}}"
+          depth="{{depth + 1}}"
+          bind:reply="onSubReply"
+        />
+      </view>
+
+      <!-- 展开更多回复 -->
+      <view class="expand-more" wx:if="{{hasMoreReplies}}" catch:tap="onExpand">
+        <text class="expand-text">展开更多{{comment.childCount}}条回复</text>
+        <van-icon name="arrow-down" color="#FF6B35" size="12" />
+      </view>
+    </view>
+  </view>
+</view>

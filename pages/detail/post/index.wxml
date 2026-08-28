@@ -1,0 +1,111 @@
+<!--
+  帖子详情页
+-->
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+
+<view class="page">
+  <!-- 加载骨架屏 -->
+  <van-skeleton
+    wx:if="{{loading}}"
+    title
+    avatar
+    row="5"
+    loading
+  />
+
+  <block wx:if="{{!loading && post.id}}">
+    <!-- 作者信息 -->
+    <view class="author-section">
+      <user-avatar user="{{post.author}}" isAnonymous="{{post.isAnonymous}}" size="80" />
+      <view class="author-meta">
+        <text class="meta-time">{{post.createTimeText}}</text>
+      </view>
+    </view>
+
+    <!-- 内容区 -->
+    <view class="content-section">
+      <text class="post-title" wx:if="{{post.title}}">{{post.title}}</text>
+      <text class="post-content">{{post.content}}</text>
+
+      <!-- 图片 -->
+      <view class="image-grid" wx:if="{{post.images && post.images.length > 0}}">
+        <van-image
+          wx:for="{{post.images}}"
+          wx:key="index"
+          width="{{post.images.length === 1 ? '480rpx' : '210rpx'}}"
+          height="{{post.images.length === 1 ? 'auto' : '210rpx'}}"
+          fit="cover"
+          radius="8rpx"
+          src="{{item}}"
+          bind:click="onPreviewImage"
+          data-index="{{index}}"
+          use-loading-slot
+          style="margin-bottom: 12rpx;"
+        >
+          <van-loading slot="loading" type="spinner" size="20" />
+        </van-image>
+      </view>
+
+      <!-- 分类标签 -->
+      <view class="tag-row" wx:if="{{post.categoryText}}">
+        <van-tag plain color="#FF6B35" size="medium">{{post.categoryText}}</van-tag>
+      </view>
+    </view>
+
+    <!-- 互动栏 -->
+    <view class="interaction-bar">
+      <view class="interact-item" bind:tap="onLike">
+        <van-icon name="{{post.isLiked ? 'good-job' : 'good-job-o'}}" color="{{post.isLiked ? '#FF6B35' : '#999'}}" size="22" />
+        <text class="interact-text {{post.isLiked ? 'active' : ''}}">{{post.likeCount || 0}}</text>
+      </view>
+      <view class="interact-item" bind:tap="onFocusComment">
+        <van-icon name="chat-o" color="#999" size="22" />
+        <text class="interact-text">{{post.commentCount || 0}}</text>
+      </view>
+      <view class="interact-item" bind:tap="onCollect">
+        <van-icon name="{{post.isCollected ? 'star' : 'star-o'}}" color="{{post.isCollected ? '#FAAD14' : '#999'}}" size="22" />
+        <text class="interact-text {{post.isCollected ? 'active' : ''}}">{{post.collectCount || 0}}</text>
+      </view>
+    </view>
+
+    <van-divider />
+
+    <!-- 评论列表 -->
+    <view class="comment-section">
+      <view class="section-title">
+        <text>评论 ({{post.commentCount || 0}})</text>
+      </view>
+
+      <comment-item
+        wx:for="{{comments}}"
+        wx:key="id"
+        comment="{{item}}"
+        bind:reply="onReplyComment"
+        bind:like="onLikeComment"
+        bind:expand="onExpandComment"
+      />
+
+      <van-loading
+        wx:if="{{commentLoading}}"
+        class="loading-more"
+        type="spinner"
+        color="#FF6B35"
+        size="24"
+      />
+
+      <empty-state
+        wx:if="{{!commentLoading && comments.length === 0}}"
+        text="暂无评论，快来抢沙发~"
+        icon="default"
+      />
+    </view>
+  </block>
+
+  <!-- 底部评论输入框 -->
+  <comment-input
+    placeholder="{{replyTo ? '回复 ' + replyTo + '...' : '写评论...'}}"
+    focus="{{inputFocus}}"
+    bind:send="onSendComment"
+  />
+</view>

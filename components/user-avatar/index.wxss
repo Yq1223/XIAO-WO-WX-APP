@@ -1,0 +1,23 @@
+/* 用户头像组件样式 */
+.user-avatar-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  margin-left: 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.user-school {
+  font-size: 22rpx;
+  color: var(--text-secondary);
+  margin-top: 4rpx;
+}

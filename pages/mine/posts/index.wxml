@@ -1,0 +1,39 @@
+<!--
+  我的发布页面
+-->
+<view class="page">
+  <van-tabs
+    active="{{activeTab}}"
+    bind:change="onTabChange"
+    color="#FF6B35"
+    title-active-color="#FF6B35"
+    sticky
+  >
+    <van-tab title="帖子" name="post" />
+    <van-tab title="表白" name="confession" />
+    <van-tab title="闲置" name="item" />
+  </van-tabs>
+
+  <!-- 帖子列表 -->
+  <view wx:if="{{activeTab === 'post'}}" class="list-content">
+      <post-card wx:for="{{postList}}" wx:key="id" post="{{item}}" />
+      <empty-state wx:if="{{!loading && postList.length === 0}}" text="还没有发布帖子" />
+    </view>
+
+    <!-- 表白列表 -->
+    <view wx:if="{{activeTab === 'confession'}}" class="list-content">
+      <confession-card wx:for="{{confessionList}}" wx:key="id" confession="{{item}}" />
+      <empty-state wx:if="{{!loading && confessionList.length === 0}}" text="还没有发表白" />
+    </view>
+
+    <!-- 闲置列表 -->
+    <view wx:if="{{activeTab === 'item'}}" class="list-content">
+      <van-swipe-cell wx:for="{{itemList}}" wx:key="id" right-width="{{80}}">
+        <market-card item="{{item}}" imageHeight="{{240}}" />
+        <view slot="right" class="delete-btn" bind:tap="onDeleteItem" data-id="{{item.id}}">删除</view>
+      </van-swipe-cell>
+      <empty-state wx:if="{{!loading && itemList.length === 0}}" text="还没有发布闲置" />
+    </view>
+
+  <van-loading wx:if="{{loading}}" class="loading-more" type="spinner" color="#FF6B35" size="24" />
+</view>

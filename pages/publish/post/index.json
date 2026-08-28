@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "发布帖子",
+  "usingComponents": {
+    "image-upload": "../../../components/image-upload/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-button": "/miniprogram_npm/@vant/weapp/button/index",
+    "van-switch": "/miniprogram_npm/@vant/weapp/switch/index",
+    "van-toast": "/miniprogram_npm/@vant/weapp/toast/index"
+  }
+}

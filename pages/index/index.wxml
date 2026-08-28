@@ -1,0 +1,72 @@
+<!--
+  首页 - 论坛帖子列表
+-->
+<van-toast id="van-toast" />
+
+<view class="page">
+  <!-- 顶部搜索栏 -->
+  <view class="search-bar" bind:tap="onSearchTap">
+    <van-search
+      placeholder="搜索帖子..."
+      disabled
+      shape="round"
+      background="#FF6B35"
+    />
+  </view>
+
+  <!-- 分类Tab -->
+  <van-tabs
+    active="{{activeCategory}}"
+    bind:change="onCategoryChange"
+    color="#FF6B35"
+    title-active-color="#FF6B35"
+    sticky
+    offset-top="0"
+  >
+    <van-tab
+      wx:for="{{categories}}"
+      wx:key="value"
+      title="{{item.label}}"
+      name="{{item.value}}"
+    />
+  </van-tabs>
+
+  <!-- 帖子列表 -->
+  <view class="post-list">
+      <post-card
+        wx:for="{{postList}}"
+        wx:key="id"
+        post="{{item}}"
+        bind:like="onPostLike"
+        bind:collect="onPostCollect"
+      />
+
+      <!-- 加载状态 -->
+      <van-loading
+        wx:if="{{loading}}"
+        class="loading-more"
+        type="spinner"
+        color="#FF6B35"
+        size="24"
+      >
+        加载中...
+      </van-loading>
+
+      <!-- 没有更多 -->
+      <view class="no-more" wx:if="{{!hasMore && postList.length > 0}}">
+        <van-divider contentPosition="center">没有更多了</van-divider>
+      </view>
+
+      <!-- 空状态 -->
+      <empty-state
+        wx:if="{{!loading && postList.length === 0}}"
+        text="还没有帖子，快来发第一条吧~"
+        icon="default"
+      />
+  </view>
+
+  <!-- 悬浮发帖按钮 -->
+  <view class="fab" bind:tap="onPublish">
+    <van-icon name="edit" color="#FFF" size="24" />
+  </view>
+</view>

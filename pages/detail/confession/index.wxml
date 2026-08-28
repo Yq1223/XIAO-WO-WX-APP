@@ -1,0 +1,93 @@
+<!--
+  表白墙详情页
+-->
+<van-toast id="van-toast" />
+
+<view class="page">
+  <van-skeleton wx:if="{{loading}}" title row="5" loading />
+
+  <block wx:if="{{!loading && confession.id}}">
+    <!-- 类型标签 -->
+    <view class="type-bar">
+      <van-tag
+        type="{{confession.type === 1 ? 'danger' : confession.type === 2 ? 'primary' : 'warning'}}"
+        size="large"
+      >
+        {{confession.typeText}}
+      </van-tag>
+      <text class="confession-time">{{confession.createTimeText}}</text>
+    </view>
+
+    <!-- 内容 -->
+    <view class="content-section">
+      <text class="confession-content">{{confession.content}}</text>
+
+      <!-- 图片 -->
+      <view class="image-grid" wx:if="{{confession.images && confession.images.length > 0}}">
+        <van-image
+          wx:for="{{confession.images}}"
+          wx:key="index"
+          width="210rpx"
+          height="210rpx"
+          fit="cover"
+          radius="8rpx"
+          src="{{item}}"
+          bind:click="onPreviewImage"
+          data-index="{{index}}"
+          use-loading-slot
+        >
+          <van-loading slot="loading" type="spinner" size="20" />
+        </van-image>
+      </view>
+
+      <!-- 对象描述 -->
+      <view class="target-desc" wx:if="{{confession.targetDesc}}">
+        <van-icon name="contact" color="#FF6B35" size="16" />
+        <text class="target-text">{{confession.targetDesc}}</text>
+      </view>
+    </view>
+
+    <!-- 互动栏 -->
+    <view class="interaction-bar">
+      <view class="interact-item" bind:tap="onLike">
+        <van-icon name="{{confession.isLiked ? 'good-job' : 'good-job-o'}}" color="{{confession.isLiked ? '#FF6B35' : '#999'}}" size="22" />
+        <text class="interact-text {{confession.isLiked ? 'active' : ''}}">{{confession.likeCount || 0}}</text>
+      </view>
+      <view class="interact-item">
+        <van-icon name="chat-o" color="#999" size="22" />
+        <text class="interact-text">{{confession.commentCount || 0}}</text>
+      </view>
+      <view class="interact-item" bind:tap="onCollect">
+        <van-icon name="{{confession.isCollected ? 'star' : 'star-o'}}" color="{{confession.isCollected ? '#FAAD14' : '#999'}}" size="22" />
+        <text class="interact-text {{confession.isCollected ? 'active' : ''}}">{{confession.collectCount || 0}}</text>
+      </view>
+    </view>
+
+    <van-divider />
+
+    <!-- 评论列表 -->
+    <view class="comment-section">
+      <view class="section-title">
+        <text>评论 ({{confession.commentCount || 0}})</text>
+      </view>
+
+      <comment-item
+        wx:for="{{comments}}"
+        wx:key="id"
+        comment="{{item}}"
+        bind:reply="onReplyComment"
+        bind:like="onLikeComment"
+      />
+
+      <van-loading wx:if="{{commentLoading}}" class="loading-more" type="spinner" color="#FF6B35" size="24" />
+
+      <empty-state wx:if="{{!commentLoading && comments.length === 0}}" text="暂无评论~" icon="default" />
+    </view>
+  </block>
+
+  <comment-input
+    placeholder="{{replyTo ? '回复 ' + replyTo + '...' : '写评论...'}}"
+    focus="{{inputFocus}}"
+    bind:send="onSendComment"
+  />
+</view>
