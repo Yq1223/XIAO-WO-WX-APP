@@ -42,7 +42,7 @@ npm -v
 npm install
 ```
 
-这会安装 `@vant/weapp` 组件库到 `node_modules` 目录。
+这会安装 `@vant/weapp` 组件库到 `node_modules` 目录，并自动修复 Vant 图标字体 CDN 引用问题（通过 `postinstall` 脚本）。
 
 ### 2. 在微信开发者工具中构建 npm
 
@@ -200,6 +200,13 @@ A: 两步：
 
 ### Q: 想换 TabBar 图标？
 A: 修改 `custom-tab-bar/index.wxml` 中的 `icon` 属性值，可用图标见 [Vant 图标列表](https://vant-ui.github.io/vant-weapp/#/icon)
+
+### Q: 控制台报 `Failed to load font` 错误？
+A: 这是 Vant 图标字体 CDN 地址加载失败。项目已内置自动修复脚本，`npm install` 时会自动执行。如果仍有问题，手动运行：
+```bash
+node scripts/fix-vant-font.js
+```
+然后重新执行"构建 npm"。
 
 ---
 
