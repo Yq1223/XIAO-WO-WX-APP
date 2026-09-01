@@ -1,0 +1,4 @@
+/* 举报处理样式 */
+.container {
+  padding: 20rpx;
+}

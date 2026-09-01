@@ -1,0 +1,4 @@
+/* 反馈管理样式 */
+.container {
+  padding: 20rpx;
+}

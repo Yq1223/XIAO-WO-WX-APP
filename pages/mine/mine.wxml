@@ -1,4 +1,32 @@
 <view class="container">
-  <!-- 我的页面 -->
-  <!-- 暂不实现，预留占位 -->
+  <!-- 用户信息卡片 -->
+  <view class="user-card" bindtap="onLogin">
+    <view class="avatar-wrap">
+      <image class="avatar" src="{{userInfo.avatarUrl || '/static/images/default-avatar.png'}}" mode="aspectFill" />
+    </view>
+    <view class="user-info">
+      <text class="nickname">{{userInfo.nickName || '点击登录'}}</text>
+      <text class="school">{{userInfo.school || '登录后展示学校信息'}}</text>
+    </view>
+    <van-icon name="arrow" color="#999" size="20" />
+  </view>
+
+  <!-- 常用功能 -->
+  <van-cell-group inset class="section">
+    <van-cell title="我的发布" icon="notes-o" is-link url="/pages/mine-publish/mine-publish" />
+    <van-cell title="我的收藏" icon="star-o" is-link url="/pages/mine-favorite/mine-favorite" />
+  </van-cell-group>
+
+  <!-- 管理员菜单 -->
+  <van-cell-group wx:if="{{isAdmin}}" inset class="section">
+    <view class="group-title">管理后台</view>
+    <van-cell title="订单管理" icon="orders-o" is-link url="/pages/admin-order/admin-order" />
+    <van-cell title="反馈管理" icon="comment-o" is-link url="/pages/admin-feedback/admin-feedback" />
+    <van-cell title="内容审核" icon="shield-o" is-link url="/pages/admin-audit/admin-audit" />
+    <van-cell title="用户管理" icon="friends-o" is-link url="/pages/admin-user/admin-user" />
+    <van-cell title="数据统计" icon="chart-trending-o" is-link url="/pages/admin-stats/admin-stats" />
+    <van-cell title="举报处理" icon="warning-o" is-link url="/pages/admin-report/admin-report" />
+    <van-cell title="推送管理" icon="bell" is-link url="/pages/admin-push/admin-push" />
+    <van-cell title="权限管理" icon="manager-o" is-link url="/pages/admin-permission/admin-permission" />
+  </van-cell-group>
 </view>

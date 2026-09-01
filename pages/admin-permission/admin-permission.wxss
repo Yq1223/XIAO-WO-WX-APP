@@ -1,0 +1,4 @@
+/* 权限管理样式 */
+.container {
+  padding: 20rpx;
+}

@@ -18,7 +18,17 @@
     "pages/market-carpool/market-carpool",
     "pages/service-errand/service-errand",
     "pages/service-vote/service-vote",
-    "pages/service-song/service-song"
+    "pages/service-song/service-song",
+    "pages/mine-publish/mine-publish",
+    "pages/mine-favorite/mine-favorite",
+    "pages/admin-order/admin-order",
+    "pages/admin-feedback/admin-feedback",
+    "pages/admin-audit/admin-audit",
+    "pages/admin-user/admin-user",
+    "pages/admin-stats/admin-stats",
+    "pages/admin-report/admin-report",
+    "pages/admin-push/admin-push",
+    "pages/admin-permission/admin-permission"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF6B35",

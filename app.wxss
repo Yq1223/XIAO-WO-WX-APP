@@ -1,4 +1,15 @@
 /* 全局样式 */
+
+/* Vant 图标字体覆盖 — 使用本地文件替代 CDN，解决 ERR_CACHE_MISS */
+@font-face {
+  font-family: 'vant-icon';
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+  src: url('/static/fonts/vant-icon.woff2') format('woff2'),
+       url('/static/fonts/vant-icon.woff') format('woff');
+}
+
 page {
   background-color: #F5F5F5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
