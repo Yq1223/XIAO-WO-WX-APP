@@ -1,8 +1,8 @@
 {
-  "name": "xiaowo-miniapp",
+  "name": "xiaowo",
   "version": "1.0.0",
-  "description": "校窝 - 校园社区小程序",
+  "description": "校窝 - 小窝虽小，装得下整个校园",
   "dependencies": {
-    "@vant/weapp": "^1.11.6"
+    "@vant/weapp": "^1.11.0"
   }
 }

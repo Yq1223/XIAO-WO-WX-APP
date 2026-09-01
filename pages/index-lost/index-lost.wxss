@@ -1,0 +1,4 @@
+/* 失物招领样式 */
+.container {
+  padding: 20rpx;
+}

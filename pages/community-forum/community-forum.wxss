@@ -1,0 +1,4 @@
+/* 校园论坛样式 */
+.container {
+  padding: 20rpx;
+}

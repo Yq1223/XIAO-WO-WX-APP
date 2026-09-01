@@ -1,0 +1,5 @@
+/* 自定义 TabBar 样式 */
+.tab-bar-wrap {
+  border-radius: 16rpx 16rpx 0 0;
+  overflow: hidden;
+}

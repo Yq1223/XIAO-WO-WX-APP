@@ -1,0 +1,4 @@
+/* 学长学姐传承样式 */
+.container {
+  padding: 20rpx;
+}

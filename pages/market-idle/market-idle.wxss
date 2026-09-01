@@ -1,0 +1,4 @@
+/* 闲置交易样式 */
+.container {
+  padding: 20rpx;
+}

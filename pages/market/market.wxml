@@ -1,0 +1,20 @@
+<view class="container">
+  <!-- 标签栏切换 -->
+  <van-tabs active="{{ activeTab }}" color="#FF6B35" bind:change="onTabChange" class="tabs-rounded">
+    <van-tab title="闲置交易">
+      <!-- 闲置交易内容占位 -->
+    </van-tab>
+    <van-tab title="求购专区">
+      <!-- 求购专区内容占位 -->
+    </van-tab>
+    <van-tab title="学长学姐传承">
+      <!-- 学长学姐传承内容占位 -->
+    </van-tab>
+    <van-tab title="交易评价">
+      <!-- 交易评价内容占位 -->
+    </van-tab>
+    <van-tab title="拼车拼团">
+      <!-- 拼车拼团内容占位 -->
+    </van-tab>
+  </van-tabs>
+</view>

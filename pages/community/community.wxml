@@ -1,0 +1,14 @@
+<view class="container">
+  <!-- 标签栏切换 -->
+  <van-tabs active="{{ activeTab }}" color="#FF6B35" bind:change="onTabChange" class="tabs-rounded">
+    <van-tab title="表白墙">
+      <!-- 表白墙内容占位 -->
+    </van-tab>
+    <van-tab title="树洞">
+      <!-- 树洞内容占位 -->
+    </van-tab>
+    <van-tab title="校园论坛">
+      <!-- 校园论坛内容占位 -->
+    </van-tab>
+  </van-tabs>
+</view>

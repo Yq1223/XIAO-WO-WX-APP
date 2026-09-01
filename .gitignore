@@ -1,25 +1,4 @@
-# Dependencies
 node_modules/
-package-lock.json
-
-# WeChat DevTools generated
 miniprogram_npm/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
 .DS_Store
-Thumbs.db
-desktop.ini
-
-# Logs
 *.log
-npm-debug.log*
-
-# Temporary
-*.tmp
-*.temp

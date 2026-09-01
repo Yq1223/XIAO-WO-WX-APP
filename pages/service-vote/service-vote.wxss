@@ -1,0 +1,4 @@
+/* 投票问卷样式 */
+.container {
+  padding: 20rpx;
+}

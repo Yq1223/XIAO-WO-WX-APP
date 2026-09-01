@@ -1,0 +1,4 @@
+/* 外卖跑腿样式 */
+.container {
+  padding: 20rpx;
+}

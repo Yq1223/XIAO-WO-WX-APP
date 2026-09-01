@@ -1,0 +1,4 @@
+/* 表白点歌样式 */
+.container {
+  padding: 20rpx;
+}

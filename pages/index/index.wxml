@@ -1,72 +1,21 @@
-<!--
-  首页 - 论坛帖子列表
--->
-<van-toast id="van-toast" />
+<view class="container">
+  <!-- 搜索栏 -->
+  <van-search placeholder="搜索校园动态..." shape="round" />
 
-<view class="page">
-  <!-- 顶部搜索栏 -->
-  <view class="search-bar" bind:tap="onSearchTap">
-    <van-search
-      placeholder="搜索帖子..."
-      disabled
-      shape="round"
-      background="#FF6B35"
-    />
+  <!-- 轮播图区域 -->
+  <view class="banner-section">
+    <!-- 轮播图占位 -->
   </view>
 
-  <!-- 分类Tab -->
-  <van-tabs
-    active="{{activeCategory}}"
-    bind:change="onCategoryChange"
-    color="#FF6B35"
-    title-active-color="#FF6B35"
-    sticky
-    offset-top="0"
-  >
-    <van-tab
-      wx:for="{{categories}}"
-      wx:key="value"
-      title="{{item.label}}"
-      name="{{item.value}}"
-    />
-  </van-tabs>
+  <!-- 功能入口 -->
+  <van-grid column-num="3" border="{{false}}">
+    <van-grid-item icon="description" text="校园动态" url="/pages/index-dynamic/index-dynamic" />
+    <van-grid-item icon="search" text="失物招领" url="/pages/index-lost/index-lost" />
+    <van-grid-item icon="flag-o" text="活动发布" url="/pages/index-activity/index-activity" />
+  </van-grid>
 
-  <!-- 帖子列表 -->
-  <view class="post-list">
-      <post-card
-        wx:for="{{postList}}"
-        wx:key="id"
-        post="{{item}}"
-        bind:like="onPostLike"
-        bind:collect="onPostCollect"
-      />
-
-      <!-- 加载状态 -->
-      <van-loading
-        wx:if="{{loading}}"
-        class="loading-more"
-        type="spinner"
-        color="#FF6B35"
-        size="24"
-      >
-        加载中...
-      </van-loading>
-
-      <!-- 没有更多 -->
-      <view class="no-more" wx:if="{{!hasMore && postList.length > 0}}">
-        <van-divider contentPosition="center">没有更多了</van-divider>
-      </view>
-
-      <!-- 空状态 -->
-      <empty-state
-        wx:if="{{!loading && postList.length === 0}}"
-        text="还没有帖子，快来发第一条吧~"
-        icon="default"
-      />
-  </view>
-
-  <!-- 悬浮发帖按钮 -->
-  <view class="fab" bind:tap="onPublish">
-    <van-icon name="edit" color="#FFF" size="24" />
+  <!-- 内容列表区域 -->
+  <view class="content-list">
+    <!-- 校园动态列表占位 -->
   </view>
 </view>

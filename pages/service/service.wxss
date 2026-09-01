@@ -1,0 +1,10 @@
+/* 服务样式 */
+.container {
+  background-color: #F5F5F5;
+  min-height: 100vh;
+}
+
+.tabs-rounded ::v-deep .van-tabs__wrap {
+  border-radius: 8rpx;
+  overflow: hidden;
+}
