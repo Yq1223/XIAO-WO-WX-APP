@@ -2,7 +2,6 @@
   <!-- 顶部用户信息区域 -->
   <view class="header">
     <view class="header-bg">
-      <!-- 浮动气泡 -->
       <view class="bubble bubble-1"></view>
       <view class="bubble bubble-2"></view>
       <view class="bubble bubble-3"></view>
@@ -53,35 +52,41 @@
   <!-- 常用功能 -->
   <view class="section">
     <view class="section-title">常用功能</view>
-    <van-grid column-num="4" border="{{false}}" class="func-grid">
-      <van-grid-item icon="notes-o" text="我的发布" url="/pages/mine-publish/mine-publish" />
-      <van-grid-item icon="star-o" text="我的收藏" url="/pages/mine-favorite/mine-favorite" />
-      <van-grid-item icon="eye-o" text="浏览记录" url="" />
-      <van-grid-item icon="chat-o" text="我的消息" url="" />
-    </van-grid>
+    <view class="card-box">
+      <van-grid column-num="4" border="{{false}}">
+        <van-grid-item icon="notes-o" text="我的发布" url="/pages/mine-publish/mine-publish" />
+        <van-grid-item icon="star-o" text="我的收藏" url="/pages/mine-favorite/mine-favorite" />
+        <van-grid-item icon="eye-o" text="浏览记录" url="" />
+        <van-grid-item icon="chat-o" text="我的消息" url="" />
+      </van-grid>
+    </view>
   </view>
 
   <!-- 管理员菜单 -->
   <view class="section" wx:if="{{isAdmin}}">
     <view class="section-title">管理后台</view>
-    <van-cell-group inset class="admin-group">
-      <van-cell title="订单管理" icon="orders-o" is-link url="/pages/admin-order/admin-order" />
-      <van-cell title="反馈管理" icon="comment-o" is-link url="/pages/admin-feedback/admin-feedback" />
-      <van-cell title="内容审核" icon="shield-o" is-link url="/pages/admin-audit/admin-audit" />
-      <van-cell title="用户管理" icon="friends-o" is-link url="/pages/admin-user/admin-user" />
-      <van-cell title="数据统计" icon="chart-trending-o" is-link url="/pages/admin-stats/admin-stats" />
-      <van-cell title="举报处理" icon="warning-o" is-link url="/pages/admin-report/admin-report" />
-      <van-cell title="推送管理" icon="bell" is-link url="/pages/admin-push/admin-push" />
-      <van-cell title="权限管理" icon="manager-o" is-link url="/pages/admin-permission/admin-permission" />
-    </van-cell-group>
+    <view class="card-box">
+      <van-cell-group>
+        <van-cell title="订单管理" icon="orders-o" is-link url="/pages/admin-order/admin-order" />
+        <van-cell title="反馈管理" icon="comment-o" is-link url="/pages/admin-feedback/admin-feedback" />
+        <van-cell title="内容审核" icon="shield-o" is-link url="/pages/admin-audit/admin-audit" />
+        <van-cell title="用户管理" icon="friends-o" is-link url="/pages/admin-user/admin-user" />
+        <van-cell title="数据统计" icon="chart-trending-o" is-link url="/pages/admin-stats/admin-stats" />
+        <van-cell title="举报处理" icon="warning-o" is-link url="/pages/admin-report/admin-report" />
+        <van-cell title="推送管理" icon="bell" is-link url="/pages/admin-push/admin-push" />
+        <van-cell title="权限管理" icon="manager-o" is-link url="/pages/admin-permission/admin-permission" />
+      </van-cell-group>
+    </view>
   </view>
 
   <!-- 底部菜单 -->
   <view class="section">
-    <van-cell-group inset class="bottom-group">
-      <van-cell title="帮助中心" icon="question-o" is-link />
-      <van-cell title="意见反馈" icon="comment-o" is-link />
-      <van-cell title="关于我们" icon="info-o" is-link />
-    </van-cell-group>
+    <view class="card-box">
+      <van-cell-group>
+        <van-cell title="帮助中心" icon="question-o" is-link />
+        <van-cell title="意见反馈" icon="comment-o" is-link />
+        <van-cell title="关于我们" icon="info-o" is-link />
+      </van-cell-group>
+    </view>
   </view>
 </view>
