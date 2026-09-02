@@ -1,0 +1,37 @@
+<view class="page">
+  <!-- 头像 -->
+  <view class="section">
+    <view class="card-box">
+      <van-cell-group>
+        <van-cell title="头像" is-link center bind:click="onChangeAvatar">
+          <image class="avatar-small" src="{{userInfo.avatarUrl || '/static/images/default-avatar.png'}}" mode="aspectFill" slot="value" />
+        </van-cell>
+      </van-cell-group>
+    </view>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="section">
+    <view class="card-box">
+      <van-cell-group>
+        <van-cell title="昵称" value="{{userInfo.nickName || '未设置'}}" is-link bind:click="onEditNickname" />
+        <van-cell title="性别" value="{{genderText}}" is-link bind:click="onShowGender" />
+        <van-cell title="学校" value="{{userInfo.school || '未设置'}}" is-link bind:click="onEditSchool" />
+        <van-cell title="学号" value="{{userInfo.studentId || '未设置'}}" is-link bind:click="onEditStudentId" />
+        <van-cell title="个性签名" value="{{userInfo.signature || '这个人很懒，什么都没写'}}" is-link bind:click="onEditSignature" />
+      </van-cell-group>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-btn" bindtap="onLogout">退出登录</view>
+
+  <!-- 性别选择 -->
+  <van-action-sheet
+    show="{{showGenderSheet}}"
+    actions="{{genderActions}}"
+    cancel-text="取消"
+    bind:close="onCloseGender"
+    bind:select="onSelectGender"
+  />
+</view>

@@ -28,7 +28,9 @@
     "pages/admin-stats/admin-stats",
     "pages/admin-report/admin-report",
     "pages/admin-push/admin-push",
-    "pages/admin-permission/admin-permission"
+    "pages/admin-permission/admin-permission",
+    "pages/mine-setting/mine-setting",
+    "pages/mine-profile/mine-profile"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF6B35",

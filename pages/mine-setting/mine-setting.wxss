@@ -1,0 +1,35 @@
+/* 设置页面样式 */
+.page {
+  min-height: 100vh;
+  background-color: #F5F5F5;
+  padding-bottom: 60rpx;
+}
+
+.section {
+  margin: 24rpx 0;
+}
+
+.section-title {
+  font-size: 26rpx;
+  color: #999;
+  padding: 0 24rpx 12rpx;
+}
+
+.card-box {
+  margin: 0 24rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  background: #fff;
+}
+
+.logout-btn {
+  margin: 60rpx 24rpx 0;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  color: #FF6B35;
+  font-weight: 500;
+}

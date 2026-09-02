@@ -1,0 +1,40 @@
+<view class="page">
+  <!-- 账号与安全 -->
+  <view class="section">
+    <view class="section-title">账号与安全</view>
+    <view class="card-box">
+      <van-cell-group>
+        <van-cell title="手机号" value="{{phone}}" is-link />
+        <van-cell title="微信绑定" value="已绑定" is-link />
+        <van-cell title="学校认证" value="{{schoolVerified ? '已认证' : '未认证'}}" is-link />
+      </van-cell-group>
+    </view>
+  </view>
+
+  <!-- 通用设置 -->
+  <view class="section">
+    <view class="section-title">通用设置</view>
+    <view class="card-box">
+      <van-cell-group>
+        <van-cell title="消息通知" is-link />
+        <van-cell title="隐私设置" is-link />
+        <van-cell title="深色模式" is-link />
+      </van-cell-group>
+    </view>
+  </view>
+
+  <!-- 其他 -->
+  <view class="section">
+    <view class="section-title">其他</view>
+    <view class="card-box">
+      <van-cell-group>
+        <van-cell title="清除缓存" is-link bind:click="onClearCache" />
+        <van-cell title="意见反馈" is-link />
+        <van-cell title="关于校窝" is-link value="v1.0.0" />
+      </van-cell-group>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-btn" bindtap="onLogout">退出登录</view>
+</view>
