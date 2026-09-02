@@ -1,32 +1,87 @@
-<view class="container">
-  <!-- 用户信息卡片 -->
-  <view class="user-card" bindtap="onLogin">
-    <view class="avatar-wrap">
-      <image class="avatar" src="{{userInfo.avatarUrl || '/static/images/default-avatar.png'}}" mode="aspectFill" />
+<view class="page">
+  <!-- 顶部用户信息区域 -->
+  <view class="header">
+    <view class="header-bg">
+      <!-- 浮动气泡 -->
+      <view class="bubble bubble-1"></view>
+      <view class="bubble bubble-2"></view>
+      <view class="bubble bubble-3"></view>
+      <view class="bubble bubble-4"></view>
+      <view class="bubble bubble-5"></view>
+      <view class="bubble bubble-6"></view>
     </view>
-    <view class="user-info">
-      <text class="nickname">{{userInfo.nickName || '点击登录'}}</text>
-      <text class="school">{{userInfo.school || '登录后展示学校信息'}}</text>
+    <view class="user-section">
+      <view class="avatar-wrap" bindtap="onLogin">
+        <image class="avatar" src="{{userInfo.avatarUrl || '/static/images/default-avatar.png'}}" mode="aspectFill" />
+      </view>
+      <view class="user-info">
+        <text class="nickname">{{userInfo.nickName || '点击登录'}}</text>
+        <view class="school-tag" wx:if="{{userInfo.school}}">
+          <van-icon name="location-o" size="12" color="#fff" />
+          <text>{{userInfo.school}}</text>
+        </view>
+      </view>
+      <view class="setting-btn" bindtap="goSetting">
+        <van-icon name="setting-o" size="22" color="#fff" />
+      </view>
     </view>
-    <van-icon name="arrow" color="#999" size="20" />
+
+    <!-- 数据统计 -->
+    <view class="stats-card">
+      <view class="stat-item" bindtap="goPublish">
+        <text class="stat-num">{{stats.publish || 0}}</text>
+        <text class="stat-label">发布</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="goFavorite">
+        <text class="stat-num">{{stats.favorite || 0}}</text>
+        <text class="stat-label">收藏</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="goFollow">
+        <text class="stat-num">{{stats.follow || 0}}</text>
+        <text class="stat-label">关注</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="goFans">
+        <text class="stat-num">{{stats.fans || 0}}</text>
+        <text class="stat-label">粉丝</text>
+      </view>
+    </view>
   </view>
 
   <!-- 常用功能 -->
-  <van-cell-group inset class="section">
-    <van-cell title="我的发布" icon="notes-o" is-link url="/pages/mine-publish/mine-publish" />
-    <van-cell title="我的收藏" icon="star-o" is-link url="/pages/mine-favorite/mine-favorite" />
-  </van-cell-group>
+  <view class="section">
+    <view class="section-title">常用功能</view>
+    <van-grid column-num="4" border="{{false}}" class="func-grid">
+      <van-grid-item icon="notes-o" text="我的发布" url="/pages/mine-publish/mine-publish" />
+      <van-grid-item icon="star-o" text="我的收藏" url="/pages/mine-favorite/mine-favorite" />
+      <van-grid-item icon="eye-o" text="浏览记录" url="" />
+      <van-grid-item icon="chat-o" text="我的消息" url="" />
+    </van-grid>
+  </view>
 
   <!-- 管理员菜单 -->
-  <van-cell-group wx:if="{{isAdmin}}" inset class="section">
-    <view class="group-title">管理后台</view>
-    <van-cell title="订单管理" icon="orders-o" is-link url="/pages/admin-order/admin-order" />
-    <van-cell title="反馈管理" icon="comment-o" is-link url="/pages/admin-feedback/admin-feedback" />
-    <van-cell title="内容审核" icon="shield-o" is-link url="/pages/admin-audit/admin-audit" />
-    <van-cell title="用户管理" icon="friends-o" is-link url="/pages/admin-user/admin-user" />
-    <van-cell title="数据统计" icon="chart-trending-o" is-link url="/pages/admin-stats/admin-stats" />
-    <van-cell title="举报处理" icon="warning-o" is-link url="/pages/admin-report/admin-report" />
-    <van-cell title="推送管理" icon="bell" is-link url="/pages/admin-push/admin-push" />
-    <van-cell title="权限管理" icon="manager-o" is-link url="/pages/admin-permission/admin-permission" />
-  </van-cell-group>
+  <view class="section" wx:if="{{isAdmin}}">
+    <view class="section-title">管理后台</view>
+    <van-cell-group inset class="admin-group">
+      <van-cell title="订单管理" icon="orders-o" is-link url="/pages/admin-order/admin-order" />
+      <van-cell title="反馈管理" icon="comment-o" is-link url="/pages/admin-feedback/admin-feedback" />
+      <van-cell title="内容审核" icon="shield-o" is-link url="/pages/admin-audit/admin-audit" />
+      <van-cell title="用户管理" icon="friends-o" is-link url="/pages/admin-user/admin-user" />
+      <van-cell title="数据统计" icon="chart-trending-o" is-link url="/pages/admin-stats/admin-stats" />
+      <van-cell title="举报处理" icon="warning-o" is-link url="/pages/admin-report/admin-report" />
+      <van-cell title="推送管理" icon="bell" is-link url="/pages/admin-push/admin-push" />
+      <van-cell title="权限管理" icon="manager-o" is-link url="/pages/admin-permission/admin-permission" />
+    </van-cell-group>
+  </view>
+
+  <!-- 底部菜单 -->
+  <view class="section">
+    <van-cell-group inset class="bottom-group">
+      <van-cell title="帮助中心" icon="question-o" is-link />
+      <van-cell title="意见反馈" icon="comment-o" is-link />
+      <van-cell title="关于我们" icon="info-o" is-link />
+    </van-cell-group>
+  </view>
 </view>

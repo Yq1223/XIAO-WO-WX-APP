@@ -1,7 +1,13 @@
 Page({
   data: {
     userInfo: {},
-    isAdmin: false
+    isAdmin: false,
+    stats: {
+      publish: 0,
+      favorite: 0,
+      follow: 0,
+      fans: 0
+    }
   },
   onLoad() {
     this.loadUserInfo()
@@ -11,30 +17,42 @@ Page({
       this.getTabBar().setData({ active: 4 })
     }
   },
-  // 加载用户信息
   loadUserInfo() {
     const userInfo = wx.getStorageSync('userInfo') || {}
     const isAdmin = userInfo.role === 'admin'
-    this.setData({ userInfo, isAdmin })
+    // TODO: 从后端获取统计数据
+    const stats = wx.getStorageSync('userStats') || { publish: 0, favorite: 0, follow: 0, fans: 0 }
+    this.setData({ userInfo, isAdmin, stats })
   },
-  // 点击登录/编辑资料
   onLogin() {
-    if (this.data.userInfo.nickName) {
-      // 已登录，可跳转编辑资料页
-      return
-    }
-    // TODO: 实现登录逻辑
+    if (this.data.userInfo.nickName) return
     wx.getUserProfile({
       desc: '用于完善用户资料',
       success: (res) => {
         const userInfo = {
           ...res.userInfo,
-          school: '', // TODO: 让用户填写学校
-          role: 'user' // TODO: 从后端获取角色
+          school: '',
+          role: 'user'
         }
         wx.setStorageSync('userInfo', userInfo)
         this.setData({ userInfo })
       }
     })
+  },
+  goSetting() {
+    // TODO: 跳转设置页
+    wx.showToast({ title: '设置页面开发中', icon: 'none' })
+  },
+  goPublish() {
+    wx.navigateTo({ url: '/pages/mine-publish/mine-publish' })
+  },
+  goFavorite() {
+    wx.navigateTo({ url: '/pages/mine-favorite/mine-favorite' })
+  },
+  goFollow() {
+    wx.showToast({ title: '关注页面开发中', icon: 'none' })
+  },
+  goFans() {
+    wx.showToast({ title: '粉丝页面开发中', icon: 'none' })
   }
 })

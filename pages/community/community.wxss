@@ -5,6 +5,6 @@
 }
 
 .tabs-rounded ::v-deep .van-tabs__wrap {
-  border-radius: 8rpx;
+  border-radius: 16rpx;
   overflow: hidden;
 }
