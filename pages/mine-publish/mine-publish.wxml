@@ -1,3 +1,63 @@
-<view class="container">
-  <!-- 我的发布页面 -->
+<view class="page">
+  <!-- 顶部：搜索 + 主Tab -->
+  <view class="top-bar">
+    <van-search value="{{keyword}}" placeholder="搜索{{tabs[activeTab]}}" shape="round" background="transparent"
+      bind:change="onSearch" bind:clear="onClearSearch" />
+    <van-tabs active="{{activeTab}}" bind:change="onTabChange" color="#FF6B35" line-width="40rpx" line-height="6rpx">
+      <van-tab wx:for="{{tabs}}" wx:key="*this" title="{{item}}"></van-tab>
+    </van-tabs>
+  </view>
+
+  <!-- 列表 -->
+  <view class="list-wrap">
+    <van-empty wx:if="{{currentList.length === 0}}" description="暂无发布内容" />
+
+    <view class="card" wx:for="{{currentList}}" wx:key="id"
+      data-id="{{item.id}}" data-type="{{item.type}}" bindtap="onView">
+
+      <!-- 标题行 -->
+      <view class="card-header">
+        <view class="card-title">
+          <van-tag size="small" color="{{item.tagColor}}" plain>{{item.subType}}</van-tag>
+          <text wx:if="{{item.title}}" class="title-text">{{item.title}}</text>
+        </view>
+        <view class="card-delete" catchtap="onDelete" data-id="{{item.id}}" data-type="{{item.type}}">
+          <van-icon name="delete-o" size="18" color="#999" />
+        </view>
+      </view>
+
+      <!-- 内容 -->
+      <view class="card-content">{{item.content}}</view>
+
+      <!-- 图片 -->
+      <view class="card-images" wx:if="{{item.images && item.images.length > 0}}">
+        <image wx:for="{{item.images}}" wx:for-item="img" wx:key="*this" class="card-img" src="{{img}}" mode="aspectFill" />
+      </view>
+
+      <!-- 集市商品价格 -->
+      <view class="price-row" wx:if="{{item.sellingPrice !== undefined}}">
+        <text class="price">¥{{item.sellingPrice}}</text>
+        <text class="original-price" wx:if="{{item.originalPrice}}">原价 ¥{{item.originalPrice}}</text>
+      </view>
+
+      <!-- 底部统计 -->
+      <view class="card-footer">
+        <view class="card-stats">
+          <view class="stat-item" wx:if="{{item.viewCount !== undefined}}">
+            <van-icon name="eye-o" size="28rpx" /> {{item.viewCount}}
+          </view>
+          <view class="stat-item">
+            <van-icon name="good-job-o" size="28rpx" /> {{item.likeCount}}
+          </view>
+          <view class="stat-item">
+            <van-icon name="chat-o" size="28rpx" /> {{item.commentCount}}
+          </view>
+          <view class="stat-item" wx:if="{{item.collectCount !== undefined}}">
+            <van-icon name="star-o" size="28rpx" /> {{item.collectCount}}
+          </view>
+        </view>
+        <text class="card-time">{{item.createdAt}}</text>
+      </view>
+    </view>
+  </view>
 </view>

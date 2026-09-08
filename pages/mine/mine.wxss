@@ -60,14 +60,37 @@
   padding: 100rpx 40rpx 30rpx;
 }
 
-.avatar-wrap { flex-shrink: 0; }
+.avatar-wrap {
+  flex-shrink: 0;
+  width: 128rpx;
+  height: 128rpx;
+}
+
+/* 清除 button 默认样式，撑满父容器 */
+.avatar-btn {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 50% !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+.avatar-btn::after {
+  display: none !important;
+  border: none !important;
+}
 
 .avatar {
   width: 128rpx;
   height: 128rpx;
   border-radius: 50%;
-  border: 6rpx solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.2);
+  display: block;
+  object-fit: cover;
 }
 
 .user-info {
